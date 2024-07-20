@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "885449612392",
+    "project_id": "get-stonkd",
+    "storage_bucket": "get-stonkd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885449612392:android:291bf3505ffc9da7da6fdd",
+        "android_client_info": {
+          "package_name": "com.example.get_stonkd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZk4YRQkIkQQnUy0h_-5NqHYSamrVHAbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
