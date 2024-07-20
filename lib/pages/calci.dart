@@ -1,13 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_stonkd/components/my_button.dart';
-import 'package:get_stonkd/components/my_textfield.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Calci extends StatefulWidget {
   final String symbol;
-  Calci({super.key, required this.symbol});
+  const Calci({super.key, required this.symbol});
 
   @override
   State<Calci> createState() => _CalciState();
@@ -52,9 +51,7 @@ class DailyData {
 Future<DailyData> fetchData(String stock) async {
   // Specify the URL
   var url = Uri.parse(
-      'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol=' +
-          stock +
-          '&apikey=QVFA4PKCG6TS3W24');
+      'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol=$stock&apikey=QVFA4PKCG6TS3W24');
 
   // Make the GET request
   var response = await http.get(url);
@@ -190,7 +187,7 @@ class _CalciState extends State<Calci> {
         body: Stack(
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/background.jpeg"),
                   fit: BoxFit.cover,
@@ -213,7 +210,7 @@ class _CalciState extends State<Calci> {
                                   controller: buyDateController,
                                   readOnly: true,
                                   decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
+                                    border: const OutlineInputBorder(),
                                     labelText: 'Starting Date',
                                     fillColor: Colors.grey.shade200,
                                     filled: true,
@@ -224,7 +221,7 @@ class _CalciState extends State<Calci> {
                                   controller: sellDateController,
                                   readOnly: true,
                                   decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
+                                    border: const OutlineInputBorder(),
                                     labelText: 'Ending Date',
                                     fillColor: Colors.grey.shade200,
                                     filled: true,
@@ -239,7 +236,7 @@ class _CalciState extends State<Calci> {
                           controller: quantity,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: const OutlineInputBorder(),
                             labelText: 'Quantity',
                             fillColor: Colors.grey.shade200,
                             filled: true,
@@ -302,7 +299,7 @@ class _CalciState extends State<Calci> {
         body: Stack(
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/background.jpeg"),
                   fit: BoxFit.cover,
@@ -325,7 +322,7 @@ class _CalciState extends State<Calci> {
                                     controller: buyDateController,
                                     readOnly: true,
                                     decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
+                                      border: const OutlineInputBorder(),
                                       labelText: 'Starting Date',
                                       fillColor: Colors.grey.shade200,
                                       filled: true,
@@ -336,7 +333,7 @@ class _CalciState extends State<Calci> {
                                     controller: sellDateController,
                                     readOnly: true,
                                     decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
+                                      border: const OutlineInputBorder(),
                                       labelText: 'Ending Date',
                                       fillColor: Colors.grey.shade200,
                                       filled: true,
@@ -351,7 +348,7 @@ class _CalciState extends State<Calci> {
                             controller: quantity,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(),
+                              border: const OutlineInputBorder(),
                               labelText: 'Quantity',
                               fillColor: Colors.grey.shade200,
                               filled: true,

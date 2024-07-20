@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
       double displayW = MediaQuery.of(context).size.width;
       double displayH = MediaQuery.of(context).size.height;
       return Scaffold(
-          backgroundColor: Color.fromARGB(255, 255, 218, 185),
+          backgroundColor: const Color.fromARGB(255, 255, 218, 185),
           body: SafeArea(
               child: Center(
                   child: SingleChildScrollView(
@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
       double displayW = MediaQuery.of(context).size.width;
       double displayH = MediaQuery.of(context).size.height;
       return Scaffold(
-          backgroundColor: Colors.green[200],
+          backgroundColor: const Color.fromARGB(255, 255, 218, 185),
           body: SafeArea(
               child: Center(
                   child: SingleChildScrollView(

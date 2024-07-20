@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -46,18 +46,12 @@ class _HomeState extends State<Home> {
     if (search.isEmpty) {
       return [];
     }
-    // Specify the URL
     var url = Uri.parse(
-        'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=' +
-            search +
-            '&apikey=27934ROJSB0SQMHI');
+        'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=$search&apikey=27934ROJSB0SQMHI');
 
-    // Make the GET request
     var response = await http.get(url);
 
-    // Check if the request was successful
     if (response.statusCode == 200) {
-      // Decode the response body
       var data = jsonDecode(response.body);
       if (data['bestMatches'] != null && data['bestMatches'] is List) {
         final List<dynamic> bestMatchesJson = data['bestMatches'];
@@ -72,7 +66,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     double displayW = MediaQuery.of(context).size.width;
     double displayH = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -90,9 +83,8 @@ class _HomeState extends State<Home> {
           ],
         ),
         body: Stack(children: <Widget>[
-          // Background image
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.jpeg"),
                 fit: BoxFit.cover,
@@ -102,21 +94,6 @@ class _HomeState extends State<Home> {
           SafeArea(
               child: SingleChildScrollView(
             child: Column(children: [
-              // const Text(
-              //   'Welcome Back!',
-              //   style: TextStyle(
-              //     color: Colors.black87,
-              //     fontSize: 20,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
-              // const Text(
-              //   'We\'re so excited to see you again!',
-              //   style: TextStyle(
-              //     color: Colors.black87,
-              //     fontSize: 16,
-              //   ),
-              // ),
               SizedBox(height: .035 * displayH),
               TypeAheadField<Results>(
                 suggestionsCallback: (search) => fetchResults(search),
@@ -126,7 +103,7 @@ class _HomeState extends State<Home> {
                       focusNode: focusNode,
                       autofocus: true,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         labelText: 'Search',
                         fillColor: Colors.grey.shade200,
                         filled: true,
@@ -151,7 +128,7 @@ class _HomeState extends State<Home> {
               // not a member? register now
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                  "logged in as : " + user.email!,
+                  "logged in as : ${user.email!}",
                   style: TextStyle(color: Colors.grey[700]),
                 ),
                 SizedBox(width: .0056 * displayW),
