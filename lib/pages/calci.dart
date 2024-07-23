@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_stonkd/components/my_button.dart';
 import 'package:get_stonkd/pages/auth_page.dart';
 import 'package:get_stonkd/pages/history.dart';
@@ -53,8 +54,10 @@ class DailyData {
 
 Future<DailyData> fetchData(String stock) async {
   // Specify the URL
+
+  final String apiKey = dotenv.env['API_KEY'] ?? "No api key";
   var url = Uri.parse(
-      'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol=$stock&apikey=QVFA4PKCG6TS3W24');
+      'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol=$stock&apikey=$apiKey');
 
   // Make the GET request
   var response = await http.get(url);

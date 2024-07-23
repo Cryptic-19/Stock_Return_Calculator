@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get_stonkd/pages/auth_page.dart';
 import 'package:get_stonkd/pages/calci.dart';
@@ -36,6 +37,7 @@ class Results {
 class _HomeState extends State<Home> {
   final user = FirebaseAuth.instance.currentUser!;
   final searchController = TextEditingController();
+  final String? apikey = dotenv.env['API_KEY'] ?? "No api key";
 
   void signUserOut() {
     FirebaseAuth.instance.signOut();
@@ -50,7 +52,7 @@ class _HomeState extends State<Home> {
       return [];
     }
     var url = Uri.parse(
-        'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=$search&apikey=27934ROJSB0SQMHI');
+        'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=$search&apikey=$apikey');
 
     var response = await http.get(url);
 
