@@ -1,4 +1,4 @@
 # get_stonkd
 
-Core project
+Core Review Project.
 
