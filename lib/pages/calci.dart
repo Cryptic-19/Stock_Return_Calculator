@@ -379,7 +379,7 @@ class _CalciState extends State<Calci> {
                     left: 0.05 * displayW,
                     child: Container(
                       width: 0.9 * displayW,
-                      height: 0.32 * displayH,
+                      height: 0.34 * displayH,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: const [

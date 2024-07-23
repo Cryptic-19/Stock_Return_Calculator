@@ -38,7 +38,8 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     try {
-      if (passwordController.text == confirmPasswordController.text) {
+      if (passwordController.text.trim() ==
+          confirmPasswordController.text.trim()) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
@@ -85,8 +86,8 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
       );
       // pop the loading circle
       Navigator.pop(context);
