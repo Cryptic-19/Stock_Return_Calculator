@@ -40,8 +40,8 @@ class _LoginPageState extends State<LoginPage> {
     try {
       if (passwordController.text == confirmPasswordController.text) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
         );
         Navigator.pop(context);
         Navigator.push(
