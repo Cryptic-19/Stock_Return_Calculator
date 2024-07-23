@@ -409,8 +409,10 @@ class _CalciState extends State<Calci> {
                           ),
                           Slider(
                             value: _sliderValue1,
-                            min: double.parse(lowVal1),
-                            max: double.parse(highVal1),
+                            min: double.parse(
+                                double.parse(lowVal1).toStringAsFixed(2)),
+                            max: double.parse(
+                                double.parse(highVal1).toStringAsFixed(2)),
                             divisions: ((double.parse(highVal1) -
                                                 double.parse(lowVal1)) /
                                             0.01)
@@ -451,8 +453,10 @@ class _CalciState extends State<Calci> {
                           ),
                           Slider(
                             value: _sliderValue2,
-                            min: double.parse(lowVal2),
-                            max: double.parse(highVal2),
+                            min: double.parse(
+                                double.parse(lowVal2).toStringAsFixed(2)),
+                            max: double.parse(
+                                double.parse(highVal2).toStringAsFixed(2)),
                             divisions: ((double.parse(highVal2) -
                                                 double.parse(lowVal2)) /
                                             0.01)
