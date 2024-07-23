@@ -1,7 +1,8 @@
+import 'dart:ui';
+
 import 'package:get_stonkd/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get_stonkd/components/my_textfield.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_stonkd/components/my_button.dart';
 
@@ -42,7 +43,6 @@ class _LoginPageState extends State<LoginPage> {
           email: emailController.text,
           password: passwordController.text,
         );
-        addUser(emailController.text);
         Navigator.pop(context);
         Navigator.push(
           context,
@@ -58,12 +58,6 @@ class _LoginPageState extends State<LoginPage> {
 
       showErrorMsg(e.code);
     }
-  }
-
-  Future addUser(String email) async {
-    await FirebaseFirestore.instance
-        .collection('user:$email')
-        .add({'calculation': '', 'time': Timestamp.now()});
   }
 
   void showErrorMsg(String message) {
@@ -114,28 +108,38 @@ class _LoginPageState extends State<LoginPage> {
       double displayW = MediaQuery.of(context).size.width;
       double displayH = MediaQuery.of(context).size.height;
       return Scaffold(
-          backgroundColor: const Color.fromARGB(255, 255, 218, 185),
-          body: SafeArea(
-              child: Center(
-                  child: SingleChildScrollView(
+          body: Stack(children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background2.jpeg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        SafeArea(
+            child: Center(
+                child: SingleChildScrollView(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
             child: Column(children: [
-              SizedBox(height: .07 * displayH),
               Icon(Icons.account_circle_outlined,
                   size: 0.0005 * displayH * displayW),
-              SizedBox(height: .07 * displayH),
-              const Text(
+              SizedBox(height: .014 * displayH),
+              Text(
                 'Welcome Back!',
                 style: TextStyle(
                   color: Colors.black87,
-                  fontSize: 20,
+                  fontSize: 0.04 * displayH,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text(
-                'We\'re so excited to see you again!',
+              Text(
+                'Time to get stonk\'d again!',
                 style: TextStyle(
                   color: Colors.black87,
-                  fontSize: 16,
+                  fontSize: 0.02 * displayH,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: .035 * displayH),
@@ -164,49 +168,67 @@ class _LoginPageState extends State<LoginPage> {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   'Not a member?',
-                  style: TextStyle(color: Colors.grey[700]),
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 0.04 * displayW,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(width: .0056 * displayW),
                 GestureDetector(
                   onTap: onTap,
-                  child: const Text(
+                  child: Text(
                     'Register now.',
                     style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
+                      fontSize: 0.04 * displayW,
                     ),
                   ),
                 ),
               ]),
             ]),
-          ))));
+          ),
+        )))
+      ]));
     } else {
       double displayW = MediaQuery.of(context).size.width;
       double displayH = MediaQuery.of(context).size.height;
       return Scaffold(
-          backgroundColor: const Color.fromARGB(255, 255, 218, 185),
-          body: SafeArea(
-              child: Center(
-                  child: SingleChildScrollView(
+          body: Stack(children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background2.jpeg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        SafeArea(
+            child: Center(
+                child: SingleChildScrollView(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
             child: Column(children: [
-              SizedBox(height: .07 * displayH),
               Icon(Icons.account_circle_outlined,
                   size: 0.0005 * displayH * displayW),
-              SizedBox(height: .07 * displayH),
-              const Text(
+              SizedBox(height: .014 * displayH),
+              Text(
                 'Create An Account',
                 style: TextStyle(
                   color: Colors.black87,
-                  fontSize: 20,
+                  fontSize: 0.04 * displayH,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text(
+              Text(
                 'Join us to find out if your stonks reached new heights! (or depths..)',
                 style: TextStyle(
                   color: Colors.black87,
-                  fontSize: 16,
+                  fontSize: 0.02 * displayH,
+                  fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: .035 * displayH),
               MyTextField(
@@ -239,22 +261,29 @@ class _LoginPageState extends State<LoginPage> {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   'Already have an account?',
-                  style: TextStyle(color: Colors.grey[700]),
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 0.04 * displayW,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(width: .0056 * displayW),
                 GestureDetector(
                   onTap: onTap,
-                  child: const Text(
+                  child: Text(
                     'Login here.',
                     style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
+                      fontSize: 0.04 * displayW,
                     ),
                   ),
                 ),
               ]),
             ]),
-          ))));
+          ),
+        )))
+      ]));
     }
   }
 }

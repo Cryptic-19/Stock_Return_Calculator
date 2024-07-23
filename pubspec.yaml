@@ -39,7 +39,8 @@ dependencies:
   firebase_core: ^2.24.2
   cloud_firestore: ^4.14.0
   http: ^1.1.0
-  flutter_typeahead: ^5.2.0
+  flutter_typeahead: ^4.6.2
+  reactive_flutter_typeahead_plus: ^2.1.2
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,7 @@ flutter:
     # - images/a_dot_burr.jpeg
     # - images/a_dot_ham.jpeg
     - assets/images/background.jpeg
+    - assets/images/background2.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
