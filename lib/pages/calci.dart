@@ -375,7 +375,7 @@ class _CalciState extends State<Calci> {
                   SizedBox(height: .014 * displayH),
                   AnimatedPositioned(
                     duration: const Duration(milliseconds: 300),
-                    bottom: returnpage ? 0.282 * displayH : -(0.32 * displayH),
+                    bottom: returnpage ? 0.282 * displayH : -(0.35 * displayH),
                     left: 0.05 * displayW,
                     child: Container(
                       width: 0.9 * displayW,
@@ -489,7 +489,7 @@ class _CalciState extends State<Calci> {
                   AnimatedPositioned(
                     duration: const Duration(milliseconds: 300),
                     bottom:
-                        returnpage ? 0.09 * displayH : (-0.62 * displayH) / 2,
+                        returnpage ? 0.09 * displayH : (-0.65 * displayH) / 2,
                     left: 0.15 * displayW,
                     child: Container(
                       width: 0.7 * displayW,
